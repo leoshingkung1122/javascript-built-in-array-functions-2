@@ -385,17 +385,17 @@ function calculateTotalByLocations(bills) {
       const location = bill.location;
       const total = bill.total;
   
-      // ถ้ายังไม่มี key นี้ใน acc → ให้เริ่มนับจาก 0 ก่อน
+      
       if (!acc[location]) {
         acc[location] = 0;
       }
   
-      // บวก total ของ bill นี้เข้าไป
+      
       acc[location] += total;
       
   
       return acc;
-    }, {}); // เริ่มด้วย object ว่าง
+    }, {}); 
   }
 
   console.log(calculateTotalByLocations(bills));
