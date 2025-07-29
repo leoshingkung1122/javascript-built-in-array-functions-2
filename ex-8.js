@@ -372,7 +372,13 @@ const bills = [
         pointRate: 0.01,
     },
 ];
+const totalPaidByLocation = bills.reduce((acc,bill)=>{
+        if(acc[bill.location]){
+        acc[bill.location] += bill.total
+        }else{
+      acc[bill.location] = bill.total   
+        }  
+return acc
+},{});
 
-// Start coding here
-
-const totalPaidByLocation;
+console.log(totalPaidByLocation);
