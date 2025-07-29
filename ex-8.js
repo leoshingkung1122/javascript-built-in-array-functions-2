@@ -374,5 +374,28 @@ const bills = [
 ];
 
 // Start coding here
+const Location = bills.reduce((acc, bill) => acc.includes(bill.location) ? acc : [...acc, bill.location], []);
+console.log(Location);
 
-const totalPaidByLocation;
+const totalPaidByLocation = Location.map((location) => bills.filter((bill) => bill.location === location).reduce((acc, bill) => `${location}: ${acc + bill.total}`, 0));
+console.log(totalPaidByLocation);
+
+function calculateTotalByLocations(bills) {
+    return bills.reduce((acc, bill) => {
+      const location = bill.location;
+      const total = bill.total;
+  
+      
+      if (!acc[location]) {
+        acc[location] = 0;
+      }
+  
+      
+      acc[location] += total;
+      
+  
+      return acc;
+    }, {}); 
+  }
+
+  console.log(calculateTotalByLocations(bills));
