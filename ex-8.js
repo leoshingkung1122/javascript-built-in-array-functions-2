@@ -1,3 +1,5 @@
+
+
 const bills = [
     {
         id: "1",
@@ -375,4 +377,16 @@ const bills = [
 
 // Start coding here
 
-const totalPaidByLocation;
+const totalPaidByLocation = bills.reduce((result,bill) => {
+    const location = bill.location;
+    const total = bill.total
+    if(!result[location]){
+        result[location] = total;
+    }else{
+        result[location] += total
+    }
+    return result
+},{})
+
+
+console.log(totalPaidByLocation);
