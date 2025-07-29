@@ -374,5 +374,28 @@ const bills = [
 ];
 
 // Start coding here
+const Location = bills.reduce((acc, bill) => acc.includes(bill.location) ? acc : [...acc, bill.location], []);
+console.log(Location);
 
-const totalPaidByLocation;
+const totalPaidByLocation = Location.map((location) => bills.filter((bill) => bill.location === location).reduce((acc, bill) => `${location}: ${acc + bill.total}`, 0));
+console.log(totalPaidByLocation);
+
+function calculateTotalByLocations(bills) {
+    return bills.reduce((acc, bill) => {
+      const location = bill.location;
+      const total = bill.total;
+  
+      // ถ้ายังไม่มี key นี้ใน acc → ให้เริ่มนับจาก 0 ก่อน
+      if (!acc[location]) {
+        acc[location] = 0;
+      }
+  
+      // บวก total ของ bill นี้เข้าไป
+      acc[location] += total;
+      
+  
+      return acc;
+    }, {}); // เริ่มด้วย object ว่าง
+  }
+
+  console.log(calculateTotalByLocations(bills));
